@@ -1,0 +1,67 @@
+/*共用點*/
+* {
+	font-family: 微軟正黑體;
+}
+
+p {
+	font-size: 18px;
+}
+
+body {
+	background: url("../images/background.png") no-repeat fixed center;
+}
+
+.portfolio-item {
+	margin-bottom: 25px;
+}
+
+.tim {
+	margin: 150px auto;
+	color: white;
+}
+
+.tt {
+	color: white;
+}
+
+.tti {
+	margin-left: 70px;
+}
+
+.ttt {
+	border: 1px dashed gray;
+	text-align: center;
+}
+
+h1 {
+	color: white;
+}
+
+.main{
+/* 		
+		margin:0 auto;
+		padding-top:30px;
+text-align:center;
+		line-height: 150%;
+		border:3px solid red;
+		color:white;
+		
+		 */
+		 		
+ 		 width: 100%;
+		height:680px;  
+		background: url(about_bg.jpg) top left no-repeat;
+		line-height:40px;
+		}
+		.main-mask{
+		background-color:rgba(0, 0, 0, 0.8);
+  		width: 100%;
+		height:700px;  
+/* 			
+			margin-top:-30px; */ 
+		}
+		.main-text{
+ 			padding: 50px;
+		}
+
+

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="product.model.Product" table="java001_product">
+        <id name="productNo" column="productNo" type="java.lang.Long">
+            <generator class="native" />
+        </id>
+        <property name="productName"  column='PRO_NAME' />
+        <property name="productContent" column='PRO_CONTENT' />
+        <property name="productPrice" column='PRO_PRICE'/>
+        <property name="productStock" column='PRO_STOCK' />
+        <property name="productPic" column='PRO_PIC' />
+
+    </class>
+</hibernate-mapping>

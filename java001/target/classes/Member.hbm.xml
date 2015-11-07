@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="regis.model.Member" table="java001_member">
+        <id name="id" column="id" type="java.lang.Long">
+            <generator class="native" />
+        </id>
+        <property name="memberName"  column='MEM_NAME' />
+        <property name="memberPs" column='MEM_PS' />
+        <property name="memberEmail" column='MEM_EM'/>
+
+    </class>
+</hibernate-mapping>

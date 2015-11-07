@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> 
+			<property name="hibernate.connection.password">password</property> <property 
+			name="hibernate.connection.url">jdbc:mysql://127.0.0.1/jspdb?useUnicode=true&amp;characterEncoding=utf-8</property> 
+			<property name="hibernate.connection.username">root</property> <property 
+			name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property> -->
+
+		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+		<property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="connection.url">jdbc:sqlserver://127.0.0.1:1433;DatabaseName=JSPDB</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password">sa123456</property>
+
+
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+
+		<!-- 以下新add <property name="hibernate.current_session_context_class">thread</property> -->
+		<property name="hibernate.current_session_context_class">thread</property>
+
+
+		<!-- 到這 -->
+
+		<mapping resource="Member.hbm.xml" />
+		<mapping resource="Product.hbm.xml" />
+		<mapping resource="OrderItem.hbm.xml" />
+		<mapping resource="Order.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>
