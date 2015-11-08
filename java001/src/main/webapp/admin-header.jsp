@@ -26,17 +26,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 <!-- /#wrapper -->
-<!-- jQuery -->
-<script src="js/jquery-1.11.3.min.js"></script>
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-<!-- Menu Toggle Script -->
-<script>
-	//$("#menu-toggle").click(function(e) {
-		//e.preventDefault();
-		//$("#wrapper").toggleClass("toggled");
-	//});
-</script>
+
 
 
 
@@ -75,7 +65,7 @@
 						<p class="logotext">機械錶專賣店</p>
 				</a></li>
 				<li><a href="adminQueryMember">會員管理</a></li>
-				<li><a href="#">廣告管理</a></li>
+				<li><a href="admin_manageSlider.jsp">廣告管理</a></li>
 				<li><a href="ShowProductAdmin">商城管理</a></li>
 				<li><a href="adminQueryOrder">訂單管理</a></li>
 				<li><a href="#">About</a></li>
