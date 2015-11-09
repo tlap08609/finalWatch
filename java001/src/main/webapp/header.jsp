@@ -16,6 +16,10 @@
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/form.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+
+
+
+
 <!-- form -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/form.css">
@@ -35,15 +39,21 @@
 			<div class="row">
 				<div class="col-md-12 topbar">
 					<c:if test="${ ! empty LoginOK }">
-						<div class="col-md-2 col-md-offset-7 text-center" style="color: white"><%= session.getAttribute("user") %> ，你好！</div>
+						<div class="col-md-2 col-md-offset-7 text-center"
+							style="color: white"><%=session.getAttribute("user")%>
+							，你好！
+						</div>
 					</c:if>
 					<c:if test="${ ! empty LoginOK }">
-						<div class="col-md-2 text-center"  style="color: white"><a href="memberSelfManage.jsp"><span class="glyphicon glyphicon-folder-open"></span>  會員專區</a></div>
+						<div class="col-md-2 text-center" style="color: white">
+							<a href="memberSelfManage.jsp"><span
+								class="glyphicon glyphicon-folder-open"></span> 會員專區</a>
+						</div>
 					</c:if>
 					<c:if test="${ ! empty LoginOK }">
 						<div class="col-md-1">
-							<a href="#"><span class="glyphicon glyphicon-new-window"></span>
-								登出</a>
+							<a href="logOut.jsp"><span
+								class="glyphicon glyphicon-new-window"></span> 登出</a>
 
 						</div>
 					</c:if>
@@ -68,7 +78,7 @@
 						<li class="col-md-2 aboutus"><a href="aboutUs.jsp">關於我們</a></li>
 						<li class="col-md-2"><a href="ShowProductIndex">購物商城</a></li>
 						<li class="col-md-2"><a href="#">討論區</a></li>
-						<li class="col-md-2"><a href="#">回饋意見</a></li>
+						<li class="col-md-2"><a href="service.jsp">維修服務</a></li>
 					</ul>
 				</div>
 			</div>

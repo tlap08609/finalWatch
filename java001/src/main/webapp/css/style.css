@@ -37,8 +37,8 @@ h1 {
 	color: white;
 }
 
-.main{
-/* 		
+.main {
+	/* 		
 		margin:0 auto;
 		padding-top:30px;
 text-align:center;
@@ -47,21 +47,82 @@ text-align:center;
 		color:white;
 		
 		 */
-		 		
- 		 width: 100%;
-		height:680px;  
-		background: url(about_bg.jpg) top left no-repeat;
-		line-height:40px;
-		}
-		.main-mask{
-		background-color:rgba(0, 0, 0, 0.8);
-  		width: 100%;
-		height:700px;  
-/* 			
-			margin-top:-30px; */ 
-		}
-		.main-text{
- 			padding: 50px;
-		}
+	width: 100%;
+	height: 680px;
+	background: url(about_bg.jpg) top left no-repeat;
+	line-height: 40px;
+}
 
+.main-mask {
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height: 700px;
+	/* 			
+			margin-top:-30px; */
+}
 
+.main-text {
+	padding: 50px;
+}
+
+/*---------------clock-----------------*/
+.clock {
+	position: absolute;
+	left: 700px;
+	top: -19px;
+	width: 600px;
+	height: 600px;
+	/*border: solid 1px black;*/
+	background: url(clock.png) left top no-repeat;
+	background-size: 600px 600px;
+}
+
+.clock .secGroup, .clock .minGroup, .clock .hrGroup {
+	position: absolute;
+	left: 50%;
+	top: 46.5%;
+}
+
+.clock .secGroup .secHand {
+	position: absolute;
+	width: 2px;
+	height: 100px;
+	background-color: #1E4092;
+	border-radius: 1px;
+	left: -1px;
+	top: -99px;
+}
+
+.clock .minGroup .minHand {
+	position: absolute;
+	width: 4px;
+	height: 80px;
+	background-color: #1E4092;
+	border-radius: 2px;
+	left: -2px;
+	top: -78px;
+}
+
+.clock .hrGroup .hrHand {
+	position: absolute;
+	width: 6px;
+	height: 50px;
+	background-color: #1E4092;
+	border-radius: 3px;
+	left: -3px;
+	top: -47px;
+}
+
+.inp1 {
+	position: relative;
+	left: 0.5%;
+}
+
+.inp2 {
+	position: relative;
+	left: 9%;
+}
+
+.bottom_1 {
+	padding-bottom: 50px;
+}
