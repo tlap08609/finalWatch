@@ -43,11 +43,11 @@
 			$sec2.css('transform', 'rotate(' + (0) + 'deg)');
 
 		};
-		$('#send').click(doSearch);
-		$('.btn').click(function() {
-			alert('已收到您的預約，我們會盡快與您連絡！');
+		/* 		$('#send').click(doSearch);
+		 $('.btn').click(function() {
+		 alert('已收到您的預約，我們會盡快與您連絡！');
 
-		});
+		 }); */
 
 	});
 </script>
@@ -63,7 +63,7 @@
 					<br>
 					<h2>預約到店時間</h2>
 					<p>您可選擇預約到店時間，好讓我們為您提供個人的維修服務。</p>
-					<form name="form1" id="form1" class="form-horizontal" method="post"
+					<form id="serviceForm" class="form-horizontal" method="post"
 						action="serviceMail">
 						<div class="form-group">
 							<label for="name" class="col-md-3 control-label ">姓名</label>
@@ -81,9 +81,9 @@
 
 
 						<div class="form-group">
-							<label for="address" class="col-md-3 control-label ">來電時間</label>
+							<label for="address" class="col-md-3 control-label ">來店時間</label>
 							<div class="col-md-4">
-								<textarea class="form-control" name="service_address"
+								<textarea class="form-control" name="service_time"
 									id="service_address"></textarea>
 							</div>
 						</div>
@@ -95,7 +95,7 @@
 						</div>
 						<div class="form-group">
 							<div class="col-md-4 text-center">
-								<input class="btn" type=button value="送出" onclick="">
+								<input class="btn" type=submit value="送出" onclick="">
 							</div>
 						</div>
 

@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@include file="/header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script>
+	$(document).ready(function() {
+		$("span").zoom();
+		console.log($("span"));
+	});
+</script>
 <c:set var="funcName" value="CHE" scope="session" />
 <!-- 判斷購物車內是否有商品 -->
 <c:choose>
@@ -77,13 +84,17 @@
 					<hr>
 					<c:if test='${not empty products_lp}'>
 						<c:forEach var='mb' varStatus='vs' items='${products_lp}'>
+						  <%-- <c:set var='zz'  value='${ mb}'  /> --%>
 							<div class="col-md-4 portfolio-item ttt" style="color: black">
-								<img class="img-responsive tti" width="180"
+								<span class='zoom' id='ex1'> <img
+									class="img-responsive tti" width="180" height='320' 
 									src="${pageContext.servletContext.contextPath}/getImage?id=${mb.productNo}"
 									alt="">
+								</span>
 								<h3>${mb.productName}</h3>
 								<p>${mb.productContent}</p>
-								<h4>價格：${mb.productPrice}</h4>
+								<h4>價格：<fmt:formatNumber value="${mb.productPrice}"
+									pattern="#,###,###" /> 元</h4>
 								<p>庫存數量：${mb.productStock}</p>
 
 								<FORM id="hiddencart" action="<c:url value='BuyBook.do' />"

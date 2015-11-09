@@ -17,7 +17,7 @@
 <script src="${pageContext.request.contextPath}/js/form.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 
-
+<script src="${pageContext.request.contextPath}/js/jquery.zoom.js"></script>
 
 
 <!-- form -->

@@ -146,6 +146,8 @@ $(function() {
 							return true;
 						case "OrderConfirm-form":
 							return true;
+						case "serviceForm":
+							return true;
 							
 							
 						default:

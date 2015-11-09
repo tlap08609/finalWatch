@@ -79,7 +79,7 @@ public class LoginServlet extends HttpServlet {
 		// 4. 進行 Business Logic 運算
 		// 將LoginServiceDB類別new為物件，存放物件參考的變數為 lsdb
 		MemberHibernateDAO lsdb = new MemberHibernateDAO();
-		lsdb.checkid();
+		//lsdb.checkid();
 		// MemberHibernateDAO lsdb1= new MemberHibernateDAO();
 		// 呼叫 ms物件的 checkIDPassword()，要記得傳入userid與password兩個參數
 		Member mb = lsdb.checkIDPassword(userId, password);

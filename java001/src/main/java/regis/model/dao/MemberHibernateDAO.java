@@ -9,36 +9,37 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import regis.model.Member;
+import all.util.Encrypt;
 import all.util.HibernateUtil;
 
 public class MemberHibernateDAO implements MemberDAO {
 
-//	public boolean isDup(String name) {
-//		boolean result = false;
-//		Session session = HibernateUtil.getSessionFactory().openSession();
-//		Transaction tx = null;
-//		try {
-//			tx = session.beginTransaction();
-//			Query query = session.createQuery("from MemberBean where id=?");
-//			query.setString(0, name);
-//			List<Member> list = (List<Member>) query.list();
-//			if (list.isEmpty()) {
-//				result = false;
-//			} else {
-//				result = true;
-//			}
-//			tx.commit();
-//		} catch (Exception ex) {
-//			if (tx != null)
-//				tx.rollback();
-//			System.out.println(ex.getMessage());
-//		} finally {
-//			if (session != null) {
-//				session.close();
-//			}
-//		}
-//		return result;
-//	}
+	// public boolean isDup(String name) {
+	// boolean result = false;
+	// Session session = HibernateUtil.getSessionFactory().openSession();
+	// Transaction tx = null;
+	// try {
+	// tx = session.beginTransaction();
+	// Query query = session.createQuery("from MemberBean where id=?");
+	// query.setString(0, name);
+	// List<Member> list = (List<Member>) query.list();
+	// if (list.isEmpty()) {
+	// result = false;
+	// } else {
+	// result = true;
+	// }
+	// tx.commit();
+	// } catch (Exception ex) {
+	// if (tx != null)
+	// tx.rollback();
+	// System.out.println(ex.getMessage());
+	// } finally {
+	// if (session != null) {
+	// session.close();
+	// }
+	// }
+	// return result;
+	// }
 
 	public int save(Member member) {
 		SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -49,15 +50,18 @@ public class MemberHibernateDAO implements MemberDAO {
 			tx = session.beginTransaction();
 			session.save(member);
 			tx.commit();
+			memberIDList.add(member);
 			count = 1;
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			if (tx != null)
 				tx.rollback();
+			
 		}
-//		 finally {
-//			if (session != null)
-//				session.close();
-//		}
+		// finally {
+		// if (session != null)
+		// session.close();
+		// }
 		// factory.close();
 		// HibernateUtil.shutdown();
 		return count;
@@ -77,11 +81,11 @@ public class MemberHibernateDAO implements MemberDAO {
 			if (tx != null)
 				tx.rollback();
 			ex.printStackTrace();
-		} 
-//		finally {
-//			if (session != null)
-//				session.close();
-//		}
+		}
+		// finally {
+		// if (session != null)
+		// session.close();
+		// }
 		// factory.close();
 		return member;
 	}
@@ -143,11 +147,11 @@ public class MemberHibernateDAO implements MemberDAO {
 			if (tx != null)
 				tx.rollback();
 			ex.printStackTrace();
-		} 
-//		finally {
-//			if (session != null)
-//				session.close();
-//		}
+		}
+		// finally {
+		// if (session != null)
+		// session.close();
+		// }
 		// factory.close();
 
 		return count;
@@ -167,11 +171,11 @@ public class MemberHibernateDAO implements MemberDAO {
 			if (tx != null)
 				tx.rollback();
 			ex.printStackTrace();
-		} 
-//		finally {
-//			if (session != null)
-//				session.close();
-//		}
+		}
+		// finally {
+		// if (session != null)
+		// session.close();
+		// }
 		// factory.close();
 
 		return count;
@@ -181,7 +185,7 @@ public class MemberHibernateDAO implements MemberDAO {
 	// test from hibernate
 	static private List<Member> memberIDList = null;
 
-	public void checkid() {
+	public MemberHibernateDAO() {
 		if (memberIDList == null) {
 			memberIDList = new ArrayList<Member>();
 			populateIDList();
@@ -217,9 +221,13 @@ public class MemberHibernateDAO implements MemberDAO {
 	public Member checkIDPassword(String userId, String password) {
 		for (Member mb : memberIDList) {
 			if (mb.getMemberName().trim().equals(userId.trim())) {
+
+				String encrypedString = Encrypt.encryptString(password
+						.trim());
+				String pswd = Encrypt.getMD5Endocing(encrypedString);
 				String mbpswd = mb.getmemberPs().trim();
 				// System.out.println(s);
-				if (mbpswd.equals(password)) {
+				if (mbpswd.equals(pswd)) {
 					return mb;
 
 				}

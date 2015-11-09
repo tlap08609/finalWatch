@@ -21,16 +21,16 @@
                     </div>
                     <div class="col-md-4 text-center">
                         <p>代理品牌</p>
-                        <a href="product_list_tissot.php">
+                        <a href="http://www.tissot.ch/">
                             <img src="images/footer/tissot4.png" alt="tissot">
                         </a>
-                        <a href="product_list_titoni.php">
+                        <a href="http://www.titoni.ch/zhs.html">
                             <img class="titoni" src="images/footer/titoni4.png" alt="titoni">
                         </a>
-                        <a href="product_list_TAGHeuer.php">
+                        <a href="http://www.tagheuer.com/zh-hant/%E4%B8%BB%E9%A0%81">
                             <img src="images/footer/tag1.png" alt="tag">
                         </a>
-                        <a href="product_list_Longines.php">
+                        <a href="http://www.longines.hk/">
                             <img src="images/footer/long1.png" alt="long">
                         </a>
                     </div>

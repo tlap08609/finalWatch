@@ -25,7 +25,8 @@ body {
 }
 
 .tti {
-	margin-left: 70px;
+	/* margin-left: 70px; */
+	
 }
 
 .ttt {
@@ -49,7 +50,7 @@ text-align:center;
 		 */
 	width: 100%;
 	height: 680px;
-	background: url(about_bg.jpg) top left no-repeat;
+	background: url(../images/about_bg.jpg) top left no-repeat;
 	line-height: 40px;
 }
 
@@ -73,7 +74,7 @@ text-align:center;
 	width: 600px;
 	height: 600px;
 	/*border: solid 1px black;*/
-	background: url(clock.png) left top no-repeat;
+	background: url(../images/clock.png) left top no-repeat;
 	background-size: 600px 600px;
 }
 
@@ -125,4 +126,13 @@ text-align:center;
 
 .bottom_1 {
 	padding-bottom: 50px;
+}
+
+.zoom {
+	display: inline-block;
+	position: relative;
+}
+
+.zoom img {
+	display: block;
 }
