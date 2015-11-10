@@ -150,6 +150,8 @@ $(function() {
 							return true;
 						case "queryProductForm":
 							return true;
+						case "updateUsername":
+							return true;
 							
 							
 						default:

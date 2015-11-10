@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpSession;
 
 import product.model.OrderItemBean;
 import regis.model.Member;
-import shoppingCart.model.Order;
+import shoppingCart.model.Orders;
 import shoppingCart.model.OrderItem;
 import shoppingCart.model.ShoppingCart;
 import shoppingCart.model.dao.OrderHibernateDAO;
@@ -67,7 +68,8 @@ public class ProcessOrderServlet extends HttpServlet {
 		String bNO = request.getParameter("BNO");
 		String invoiceTitle = request.getParameter("InvoiceTitle");
 		Date today = (Date)session.getAttribute("today");
-		List<OrderItem> items = new ArrayList<OrderItem>(); 
+		Set<OrderItem> orderitems = new HashSet<>();;
+		//List<OrderItem> items = new ArrayList<OrderItem>(); 
 		Map<Integer, OrderItemBean> cart = sc.getContent();
 		Set<Integer> set = cart.keySet();
 		//OrderItemBean ta = new OrderItemBean();
@@ -80,9 +82,9 @@ public class ProcessOrderServlet extends HttpServlet {
 
 			//OrderItem oiDAO = new OrderItem(0, 0, oib.getProductID(),
 			//		description, oib.getQty(), oib.getPrice());
-			OrderItem oiDAO = new OrderItem(0,0, oib.getProductID(),
+			OrderItem oiDAO = new OrderItem(oib.getProductID(),
 							description, oib.getQty(), oib.getPrice());
-		   items.add(oiDAO);
+			orderitems.add(oiDAO);
 		   ee.save(oiDAO);
 			//ee.save(oiDAO);
 		}
@@ -92,8 +94,8 @@ public class ProcessOrderServlet extends HttpServlet {
 //OrderBean ob = new OrderBean(userId, totalAmount, shippingAddress, 
 //		bNO, invoiceTitle, today, null, items);  
 		
-		Order ob = new Order(userId, totalAmount, shippingAddress, 
-				bNO, invoiceTitle, today, null, items ); 
+		Orders ob = new Orders(userId, totalAmount, shippingAddress, 
+				bNO, invoiceTitle, today, null,null, orderitems ); 
 		OrderHibernateDAO rr = new OrderHibernateDAO();
 		rr.save(ob);
 		

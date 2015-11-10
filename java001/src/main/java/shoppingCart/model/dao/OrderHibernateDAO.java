@@ -16,7 +16,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import product.model.OrderItemBean;
-import shoppingCart.model.Order;
+import shoppingCart.model.Orders;
 import shoppingCart.model.OrderItem;
 import all.util.HibernateUtil;
 
@@ -127,7 +127,7 @@ public class OrderHibernateDAO implements OrderDAO {
 	
 	
 
-	public int save(Order order) {
+	public int save(Orders order) {
 //		   int save(Order order)
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		int count = 0;
@@ -172,15 +172,15 @@ public class OrderHibernateDAO implements OrderDAO {
 //		return member;
 //	}
 
-	public List<Order> getAll() {
+	public List<Orders> getAll() {
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List<Order> list = null;
+		List<Orders> list = null;
 		try {
 			tx = session.beginTransaction();
 			Query query = session.createQuery("from Order"); // HQL
-			list = (List<Order>) query.list();
+			list = (List<Orders>) query.list();
 
 			tx.commit();
 		} catch (Exception ex) {

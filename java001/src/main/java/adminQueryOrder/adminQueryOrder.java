@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import regis.model.Member;
 import regis.model.dao.MemberHibernateDAO;
-import shoppingCart.model.Order;
+import shoppingCart.model.Orders;
 import shoppingCart.model.dao.OrderHibernateDAO;
 
 @WebServlet("/adminQueryOrder")
@@ -23,7 +23,7 @@ public class adminQueryOrder extends HttpServlet {
 //		String name = request.getParameter("adminQueryMember");
 //		name = new String(name.getBytes("ISO-8859-1"),"utf-8");
 		OrderHibernateDAO ch = new OrderHibernateDAO();
-		List<Order> list =   ch.getAll();
+		List<Orders> list =   ch.getAll();
 		request.setAttribute("allOrder", list);
 		RequestDispatcher rd = request.getRequestDispatcher
 				              ("admin_manageOrder.jsp");

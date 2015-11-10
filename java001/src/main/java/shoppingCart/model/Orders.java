@@ -1,12 +1,9 @@
 package shoppingCart.model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
-import product.model.OrderItemBean;
-
-public class Order {
+public class Orders {
 	int 	orderNo;
 	String 	userId;
 	double	totalAmount;
@@ -16,31 +13,8 @@ public class Order {
 	Date  orderDate;
 	Date  shippingDate;
 	String	cancelTag;
-	List<OrderItem> items = new ArrayList<OrderItem>();
-	
-	
-	
-	
-	public Order() {
-		super();
-	}
-	public Order(String userId, double totalAmount, String shippingAddress,
-			String bno, String invoiceTitle, Date orderDate, Date shippingDate,
-			 List<OrderItem> items) {
-		super();
-		this.userId = userId;
-		this.totalAmount = totalAmount;
-		this.shippingAddress = shippingAddress;
-		this.bno = bno;
-		invoiceTitle = invoiceTitle;
-		this.orderDate = orderDate;
-		this.shippingDate = shippingDate;
-		this.items = items;
-	}
-	
-	
-	
-	
+	Set<OrderItem> orderitems ;
+	//List<OrderItem> items = new ArrayList<OrderItem>();
 	public int getOrderNo() {
 		return orderNo;
 	}
@@ -75,7 +49,7 @@ public class Order {
 		return invoiceTitle;
 	}
 	public void setInvoiceTitle(String invoiceTitle) {
-		invoiceTitle = invoiceTitle;
+		this.invoiceTitle = invoiceTitle;
 	}
 	public Date getOrderDate() {
 		return orderDate;
@@ -95,12 +69,34 @@ public class Order {
 	public void setCancelTag(String cancelTag) {
 		this.cancelTag = cancelTag;
 	}
-	public List<OrderItem> getItems() {
-		return items;
+	public Set<OrderItem> getOrderitems() {
+		return orderitems;
 	}
-	public void setItems(List<OrderItem> items) {
-		this.items = items;
+	public void setOrderitems(Set<OrderItem> orderitems) {
+		this.orderitems = orderitems;
 	}
+	public Orders(String userId, double totalAmount, String shippingAddress,
+			String bno, String invoiceTitle, Date orderDate, Date shippingDate,
+			String cancelTag, Set<OrderItem> orderitems) {
+		super();
+		this.userId = userId;
+		this.totalAmount = totalAmount;
+		this.shippingAddress = shippingAddress;
+		this.bno = bno;
+		this.invoiceTitle = invoiceTitle;
+		this.orderDate = orderDate;
+		this.shippingDate = shippingDate;
+		this.cancelTag = cancelTag;
+		this.orderitems = orderitems;
+	}
+	
+	
+	
+	
+	
+	
+	
+
 	
 	
 

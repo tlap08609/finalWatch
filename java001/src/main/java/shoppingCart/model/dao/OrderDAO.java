@@ -1,12 +1,12 @@
 package shoppingCart.model.dao;
 
-import shoppingCart.model.Order;
+import shoppingCart.model.Orders;
 
 
 
 public interface OrderDAO {
 	// 新增一筆記錄
-	int save(Order order);
+	int save(Orders order);
 
 //	Member findByPrimaryKey(long key);
 

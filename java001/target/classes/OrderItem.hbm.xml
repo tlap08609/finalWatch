@@ -2,14 +2,13 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="shoppingCart.model.OrderItem" table="java001_orderItem">
-        <id name="seqno" column="seqno" type="int">
-            <generator class="native" />
-        </id>
-        <property name="orderNo"  column='orderNo' />
-        <property name="productNo" column='productNo' />
-        <property name="description" column='description'/>
-		<property name="amount" column='amount'/>
-		<property name="unitPrice" column='unitPrice'/>
-    </class>
+	<class name="shoppingCart.model.OrderItem" table="java001_orderItem">
+		<id name="seqno" column="seqno" type="int">
+			<generator class="native" />
+		</id>
+			<property name="productNo" column='productNo' />
+			<property name="description" column='description' />
+			<property name="amount" column='amount' />
+			<property name="unitPrice" column='unitPrice' />
+	</class>
 </hibernate-mapping>
