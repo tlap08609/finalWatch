@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@include file="/header.jsp"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script>
 	$(document).ready(function() {
 		$("span").zoom();
@@ -36,14 +36,20 @@
 					<h3>
 						<span class="label label-default">購物商城</span>
 					</h3>
-					<p align="right" style="color: black">${AppName}${cartContent}</p>
+					<p align="right" style="color: black">${cartContent}</p>
 					<p align="right" style="color: black">
 						金額小計:
 						<c:out value="${ShoppingCart.subtotal}" default="0" />
 					</p>
 					<a href="<c:url value='ShowCartContent.jsp' />"><button
 							type="button" class="btn btn-primary pull-right">購物清單</button></a>
-
+					<!-- 搜索列 -->
+					<form id="queryProductForm" class="navbar-form" role="search" action="queryProduct" method="post">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Search" name="word">
+						</div>
+						<button type="submit" class="btn btn-default">搜索</button>
+					</form>
 
 
 
@@ -80,21 +86,24 @@
 
 
 
-
 					<hr>
 					<c:if test='${not empty products_lp}'>
 						<c:forEach var='mb' varStatus='vs' items='${products_lp}'>
-						  <%-- <c:set var='zz'  value='${ mb}'  /> --%>
+							<%-- <c:set var='zz'  value='${ mb}'  /> --%>
 							<div class="col-md-4 portfolio-item ttt" style="color: black">
 								<span class='zoom' id='ex1'> <img
-									class="img-responsive tti" width="180" height='320' 
+									class="img-responsive tti" width="180" height='320'
 									src="${pageContext.servletContext.contextPath}/getImage?id=${mb.productNo}"
 									alt="">
 								</span>
 								<h3>${mb.productName}</h3>
 								<p>${mb.productContent}</p>
-								<h4>價格：<fmt:formatNumber value="${mb.productPrice}"
-									pattern="#,###,###" /> 元</h4>
+								<h4>
+									價格：
+									<fmt:formatNumber value="${mb.productPrice}"
+										pattern="#,###,###" />
+									元
+								</h4>
 								<p>庫存數量：${mb.productStock}</p>
 
 								<FORM id="hiddencart" action="<c:url value='BuyBook.do' />"

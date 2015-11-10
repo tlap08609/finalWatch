@@ -20,6 +20,6 @@ public interface ProductDAO {
 	// 依鍵值修改一筆紀錄
 	int update(Product product);
 
-
+	public List<Product> queryProduct(String word);
 	}
 

@@ -9,12 +9,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import product.model.Product;
-import regis.model.Member;
 import all.util.HibernateUtil;
 
 public class ProductHibernateDAO implements ProductDAO {
 	private int totalPages = -1;
-//	int pageNo = 0;
+	// int pageNo = 0;
 	public static int pageNo = 0;
 	public static int recordsPerPage = 6; // 每頁六筆
 
@@ -155,6 +154,7 @@ public class ProductHibernateDAO implements ProductDAO {
 		return count;
 
 	}
+
 	public int getTotalPages() throws SQLException {
 		// 計算總共有幾頁
 		if (totalPages == -1) {
@@ -164,24 +164,22 @@ public class ProductHibernateDAO implements ProductDAO {
 		}
 		return totalPages;
 	}
-	
-//	public int getPageNo() {
-//		return pageNo;
-//	}
-//
-//	public int setPageNo(int pageNo) {
-//		return this.pageNo = pageNo;
-//	}
-//	public int getRecordsPerPage() {
-//		return recordsPerPage;
-//	}
-//
-//	public void setRecordsPerPage(int recordsPerPage) {
-//		this.recordsPerPage = recordsPerPage;
-//	}
-	
-	
-	
+
+	// public int getPageNo() {
+	// return pageNo;
+	// }
+	//
+	// public int setPageNo(int pageNo) {
+	// return this.pageNo = pageNo;
+	// }
+	// public int getRecordsPerPage() {
+	// return recordsPerPage;
+	// }
+	//
+	// public void setRecordsPerPage(int recordsPerPage) {
+	// this.recordsPerPage = recordsPerPage;
+	// }
+
 	public long getRecordCounts() throws SQLException {
 		long countsResult = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -189,8 +187,7 @@ public class ProductHibernateDAO implements ProductDAO {
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			Query query = session
-		            .createQuery("SELECT count(*) FROM Product");
+			Query query = session.createQuery("SELECT count(*) FROM Product");
 			countsResult = (long) query.uniqueResult();
 			tx.commit();
 		} catch (Exception e) {
@@ -200,8 +197,9 @@ public class ProductHibernateDAO implements ProductDAO {
 		}
 		return countsResult;
 	}
+
 	public List<Product> getPageBooks() {
-		
+
 		List<Product> list = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
@@ -209,21 +207,22 @@ public class ProductHibernateDAO implements ProductDAO {
 		try {
 			tx = session.beginTransaction();
 			Query query = session.createQuery("from Product");
-//			select rownum from Product where rownum >= ? and  rownum <= ?
-//			query.setLong(0, 9);
-//			query.setLong(1, 14);
-			int startRecordNo = (pageNo - 1) * recordsPerPage ;
+			// select rownum from Product where rownum >= ? and rownum <= ?
+			// query.setLong(0, 9);
+			// query.setLong(1, 14);
+			int startRecordNo = (pageNo - 1) * recordsPerPage;
 			int endRecordNo = (pageNo) * recordsPerPage;
 			query.setFirstResult(startRecordNo);
 			query.setMaxResults(endRecordNo);
-//			query.setFirstResult(0);
-//			query.setMaxResults(6);
+			// query.setFirstResult(0);
+			// query.setMaxResults(6);
 			list = query.list();
-//			for (Product e : list) {
-//				System.out.printf("%2d %6s %6d %14s %2d\n", e.getproductNo(),
-//						e.getproductName(), e.getproductContent(), e.getproductPrice() , e.getproductStock());
-//
-//			}
+			// for (Product e : list) {
+			// System.out.printf("%2d %6s %6d %14s %2d\n", e.getproductNo(),
+			// e.getproductName(), e.getproductContent(), e.getproductPrice() ,
+			// e.getproductStock());
+			//
+			// }
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -233,4 +232,29 @@ public class ProductHibernateDAO implements ProductDAO {
 
 		return list;
 	}
+
+	
+	public List<Product> queryProduct(String word) {
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		Transaction tx = null;
+		List<Product> list = null;
+		try {
+			tx = session.beginTransaction();
+			String hql = "FROM Product b WHERE b.productContent like :word";
+			Query query = session.createQuery(hql);
+			query.setParameter("word", "%"+word+"%");
+			 list = query.list();
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+
+
 }

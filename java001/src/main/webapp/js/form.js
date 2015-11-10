@@ -148,6 +148,8 @@ $(function() {
 							return true;
 						case "serviceForm":
 							return true;
+						case "queryProductForm":
+							return true;
 							
 							
 						default:

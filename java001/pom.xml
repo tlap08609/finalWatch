@@ -59,6 +59,15 @@
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.5.4</version>
 		</dependency>
+		<!-- ckeditor -->
+		<dependency>
+			<groupId>com.ckeditor</groupId>
+			<artifactId>ckeditor-java-core</artifactId>
+			<version>3.5.3</version>
+		</dependency>
+
+
+
 
 
 	</dependencies>
