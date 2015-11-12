@@ -15,8 +15,19 @@ public class Orders {
 	String	cancelTag;
 	Set<OrderItem> orderitems ;
 	//List<OrderItem> items = new ArrayList<OrderItem>();
+	
+	
+	
+	
 	public int getOrderNo() {
 		return orderNo;
+	}
+	public Orders() {
+		super();
+	}
+	public Orders(int orderNo) {
+		super();
+		this.orderNo = orderNo;
 	}
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;

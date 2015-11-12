@@ -1,23 +1,14 @@
 package shoppingCart.model.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.sql.DataSource;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import product.model.OrderItemBean;
 import shoppingCart.model.Orders;
-import shoppingCart.model.OrderItem;
 import all.util.HibernateUtil;
 
 public class OrderHibernateDAO implements OrderDAO {
@@ -357,7 +348,50 @@ public class OrderHibernateDAO implements OrderDAO {
 //
 //		return list;
 //	}
+	public List<Orders> getAllOrders()  {
+		List<Orders> list = new ArrayList<Orders>();
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		//String sqlOrder = "FROM orders Order by orderDate desc, orderNo desc ";
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery("FROM Orders Order by orderDate desc, orderNo desc ");
+			list = query.list();
+			tx.commit();
+		} catch (Exception ex) {
+			if (tx != null)
+				tx.rollback();
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
 
+	public List<Orders> getOrder(int orderNo)  {
+		List<Orders> list = new ArrayList<Orders>();
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		//String sqlOrder = "FROM orders Order by orderDate desc, orderNo desc ";
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery("from Orders oo join oo.orderitems where oo.orderNo = :order_No");
+			query.setParameter("order_No", orderNo);
+			list = query.list();
+			tx.commit();
+		} catch (Exception ex) {
+			if (tx != null)
+				tx.rollback();
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
 
 
 }

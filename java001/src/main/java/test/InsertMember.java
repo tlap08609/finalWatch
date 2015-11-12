@@ -1,23 +1,9 @@
 package test;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.reflect.Array;
-import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.List;
 
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
-
-import all.util.HibernateUtil;
-import product.model.Product;
-import product.model.dao.ProductHibernateDAO;
-import regis.model.Member;
-import regis.model.dao.MemberHibernateDAO;
+import shoppingCart.model.dao.OrderHibernateDAO;
 
 public class InsertMember {
 	public static void main(String args[]) throws FileNotFoundException, SQLException {
@@ -69,13 +55,20 @@ public class InsertMember {
 //		System.out.println(dd[0][1]);
 		
 		//看看我有幾個分頁test
-		ProductHibernateDAO aa = new ProductHibernateDAO();
+		//ProductHibernateDAO aa = new ProductHibernateDAO();
 //		System.out.println("多少？"+aa.getTotalPages());
 //		System.out.println(aa.getAll());
 		//[product.model.Product@6c0d9d86, product.model.Product@dbd8e44, product.model.Product@51acdf2e, product.model.Product@6a55299e, product.model.Product@2f1de2d6, product.model.Product@4eb386df, product.model.Product@79517588, product.model.Product@3a0baae5]
 //		System.out.println("多少？"+aa.getPageBooks());
 		//[product.model.Product@71812481, product.model.Product@3a0baae5, product.model.Product@7ac0e420, product.model.Product@289710d9, product.model.Product@5a18cd76, product.model.Product@3da30852]
 		
+		//測試getall排序方法
+		//OrderHibernateDAO aa = new OrderHibernateDAO();
+		//System.out.println(aa.getAllOrders());
+		
+		//測試getorder
+		OrderHibernateDAO bb = new OrderHibernateDAO();
+		System.out.println(bb.getOrder(2));
 		
 		
 	}
