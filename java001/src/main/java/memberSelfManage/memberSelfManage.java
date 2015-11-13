@@ -1,10 +1,9 @@
 package memberSelfManage;
 
 import java.io.IOException;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import shoppingCart.model.Orders;
+import shoppingCart.model.OrderItem;
 import shoppingCart.model.dao.OrderHibernateDAO;
 
 
@@ -31,8 +30,13 @@ public class memberSelfManage extends HttpServlet {
 		String orderNo = request.getParameter("orderNo");
 		int no = Integer.parseInt(orderNo.trim());
 		OrderHibernateDAO ordDAO = new OrderHibernateDAO();
-		List<Orders> ob = ordDAO.getOrder(no);
-		request.setAttribute("OrderBean", ob);
+		List<Object[]> od = ordDAO.getOrder(no);
+		List<OrderItem> oit = new ArrayList<>();
+		for(Object[] oa : od){
+			oit.add((OrderItem)oa[1]);
+		}
+		request.setAttribute("Order", od.get(0)[0]);
+		request.setAttribute("OrderItem", oit);
 		RequestDispatcher rd = request
 				.getRequestDispatcher("ShowOrderDetail.jsp");
 		rd.forward(request, response);

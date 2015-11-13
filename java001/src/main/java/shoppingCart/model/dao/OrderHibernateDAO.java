@@ -370,8 +370,9 @@ public class OrderHibernateDAO implements OrderDAO {
 		return list;
 	}
 
-	public List<Orders> getOrder(int orderNo)  {
-		List<Orders> list = new ArrayList<Orders>();
+	public List<Object[]> getOrder(int orderNo)  {
+		List<Object[]> list = new ArrayList<Object[]>();
+		// Orders od = null;  //***
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		//String sqlOrder = "FROM orders Order by orderDate desc, orderNo desc ";
 		Session session = factory.openSession();
@@ -379,8 +380,10 @@ public class OrderHibernateDAO implements OrderDAO {
 		try {
 			tx = session.beginTransaction();
 			Query query = session.createQuery("from Orders oo join oo.orderitems where oo.orderNo = :order_No");
+			//Query query = session.createQuery("from Orders oo  where oo.orderNo = :order_No");
 			query.setParameter("order_No", orderNo);
-			list = query.list();
+			list = (List<Object[]>)query.list();
+			//od = (Orders)query.uniqueResult(); //***
 			tx.commit();
 		} catch (Exception ex) {
 			if (tx != null)

@@ -14,24 +14,28 @@
 							<th><h3>${LoginOK.memberName}的訂單明細</h3></th>
 						</tr>
 						<tr>
-							<td class="active">出貨地址:${OrderBean.shippingAddress}</td>
-							<td class="active">訂購日期:${OrderBean.orderDate}</td>
-							<td class="active">訂單編號:${OrderBean.orderNo}</td>
+							<td class="info">出貨地址:${Order.shippingAddress}</td>
+							<td class="info">訂購日期:${Order.orderDate}</td>
+							<td class="info">訂單編號:${Order.orderNo}</td>
 						</tr>
 						<tr>
-							<td class="active"></td>
-							<td class="active"></td>
-							<td class="active"></td>
-							<td class="active"></td>
-							<td class="active"></td>
+							<td class="active">訂單編號</td>
+							<td class="active">產品編號</td>
+							<td class="active">商品敘述</td>
+							<td class="active">購買數量</td>
+							<td class="active">價格</td>
 						</tr>
 						<tr>
-							<td class="active"></td>
-							<td class="active"></td>
-							<td class="active"></td>
-							<td class="active"></td>
-							<td class="active"></td>
+							<c:forEach var="item" varStatus="stat" items="${OrderItem}">
+								<%-- ${OrderBean.orderitems} --%>
+								<td class="active">${item.seqno}</td>
+								<td class="active">${item.productNo}</td>
+								<td class="active">${item.description}</td>
+								<td class="active">${item.amount}</td>
+								<td class="active">${item.unitPrice}</td>
 						</tr>
+						</c:forEach>
+
 					</table>
 
 
