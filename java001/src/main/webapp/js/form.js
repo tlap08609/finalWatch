@@ -152,6 +152,8 @@ $(function() {
 							return true;
 						case "updateUsername":
 							return true;
+						case "updateUsername":
+							return true;
 							
 							
 						default:

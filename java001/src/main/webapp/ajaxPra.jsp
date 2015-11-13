@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <script>
-/* $(function(){
+$(function(){
 	
 	$('#updateUsername').submit(function(){
 		$.ajax({
@@ -13,7 +13,7 @@
 			success:function(data){
 				if(data.isValid){
 					$('#displayName').html('your name is '+data.username);
-					$('#displayName').slideDown(500);
+					//$('#displayName').slideDown(500);
 				}else{
 					alert('Please enter a valid username!!');
 				}
@@ -24,7 +24,7 @@
 	
 
 
-}) */
+}) 
 
 
 
@@ -41,12 +41,12 @@
 				<div class="panel-body">
 					<form id="updateUsername" class="navbar-form navbar-left" role="search">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search">
+							<input type="text" class="form-control" placeholder="Search" name="username">
 						</div>
 						<button type="submit" class="btn btn-default">Submit</button>
 					</form>
 					
-					<p id="displayName" style="color:black;display:none;">asasasas</p>
+					<p id="displayName" style="color:black;"></p>
 				</div>
 			</div>
 		</div>
