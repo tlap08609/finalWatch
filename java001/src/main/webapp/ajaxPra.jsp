@@ -11,9 +11,10 @@ $(function(){
 			dataType:'json',
 			data:$('#updateUsername').serialize(),
 			success:function(data){
+				console.log(data);
 				if(data.isValid){
 					$('#displayName').html('your name is '+data.username);
-					//$('#displayName').slideDown(500);
+					$('#displayName').slideDown(500);
 				}else{
 					alert('Please enter a valid username!!');
 				}

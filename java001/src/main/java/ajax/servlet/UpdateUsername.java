@@ -13,7 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class UpdateUsername
+ * https://sites.google.com/site/gson/gson-user-guide
+ * http://blog.tonycube.com/2012/03/gsonjavajson.html
+ * http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/index.html
+ * http://api.jquery.com/serialize/
+ * 
  */
 @WebServlet("/update")
 public class UpdateUsername extends HttpServlet {
