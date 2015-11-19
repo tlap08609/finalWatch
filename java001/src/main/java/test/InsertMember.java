@@ -3,6 +3,8 @@ package test;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
+import regis.model.Member;
+import regis.model.dao.MemberHibernateDAO;
 import shoppingCart.model.dao.OrderHibernateDAO;
 
 public class InsertMember {
@@ -67,10 +69,14 @@ public class InsertMember {
 		//System.out.println(aa.getAllOrders());
 		
 		//測試getorder
-		OrderHibernateDAO bb = new OrderHibernateDAO();
-		System.out.println(bb.getOrder(2));
+		//OrderHibernateDAO bb = new OrderHibernateDAO();
+		//System.out.println(bb.getOrder(2));
 		
-		
+		//測試memberid
+		MemberHibernateDAO aa = new MemberHibernateDAO();
+		long tt = 2;
+		Member aa1 = aa.findByPrimaryKey(tt);
+		System.out.println(aa1.getMemberName());
 	}
 
 }

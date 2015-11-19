@@ -56,7 +56,7 @@ public class MemberHibernateDAO implements MemberDAO {
 			ex.printStackTrace();
 			if (tx != null)
 				tx.rollback();
-			
+
 		}
 		// finally {
 		// if (session != null)
@@ -89,6 +89,8 @@ public class MemberHibernateDAO implements MemberDAO {
 		// factory.close();
 		return member;
 	}
+
+	
 
 	public List<Member> getAll() {
 		SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -222,12 +224,11 @@ public class MemberHibernateDAO implements MemberDAO {
 		for (Member mb : memberIDList) {
 			if (mb.getMemberName().trim().equals(userId.trim())) {
 
-				String encrypedString = Encrypt.encryptString(password
-						.trim());
-				String pswd = Encrypt.getMD5Endocing(encrypedString);
+				//String encrypedString = Encrypt.encryptString(password.trim());
+				//String pswd = Encrypt.getMD5Endocing(encrypedString);
 				String mbpswd = mb.getmemberPs().trim();
 				// System.out.println(s);
-				if (mbpswd.equals(pswd)) {
+				if (mbpswd.equals(password)) {
 					return mb;
 
 				}

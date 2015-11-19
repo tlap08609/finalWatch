@@ -47,7 +47,7 @@
 					</c:if>
 					<c:if test="${ ! empty LoginOK }">
 						<div class="col-md-2 text-center" style="color: white">
-							<a href="memberSelfManage.jsp"><span
+							<a href="MemberSelfManage?memberId=${LoginOK.id}"><span
 								class="glyphicon glyphicon-folder-open"></span> 會員專區</a>
 						</div>
 					</c:if>

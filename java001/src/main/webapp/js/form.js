@@ -152,8 +152,10 @@ $(function() {
 							return true;
 						case "updateUsername":
 							return true;
-						case "updateUsername":
+						case "memberUpdateSelfMemberForm":
+							
 							return true;
+							
 							
 							
 						default:

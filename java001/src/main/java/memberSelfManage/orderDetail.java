@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import regis.model.Member;
+import regis.model.dao.MemberHibernateDAO;
 import shoppingCart.model.OrderItem;
 import shoppingCart.model.dao.OrderHibernateDAO;
 
 
-@WebServlet("/memberSelfManage")
-public class memberSelfManage extends HttpServlet {
+@WebServlet("/orderDetail")
+public class orderDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
@@ -26,7 +28,7 @@ public class memberSelfManage extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String memberId = request.getParameter("memberId");
+		//String memberId = request.getParameter("memberId");
 		String orderNo = request.getParameter("orderNo");
 		int no = Integer.parseInt(orderNo.trim());
 		OrderHibernateDAO ordDAO = new OrderHibernateDAO();
@@ -35,8 +37,13 @@ public class memberSelfManage extends HttpServlet {
 		for(Object[] oa : od){
 			oit.add((OrderItem)oa[1]);
 		}
+		//MemberHibernateDAO mhd = new MemberHibernateDAO();
+		//long l = Long.parseLong(memberId);
+		//Member mm = mhd.findByPrimaryKey(l);
+		
 		request.setAttribute("Order", od.get(0)[0]);
 		request.setAttribute("OrderItem", oit);
+		//request.setAttribute("Member", mm);
 		RequestDispatcher rd = request
 				.getRequestDispatcher("ShowOrderDetail.jsp");
 		rd.forward(request, response);

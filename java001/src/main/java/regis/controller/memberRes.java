@@ -33,10 +33,11 @@ public class memberRes extends HttpServlet {
 
 		MemberHibernateDAO ch = new MemberHibernateDAO();
 		//System.out.println("iPs:"+iPs);
-		String encrypedString = Encrypt.encryptString(iPs);
-		String eIps = Encrypt.getMD5Endocing(encrypedString);
-		System.out.println("eips:"+eIps);
-		Member member = new Member(1, iId, eIps, iEmail);
+		//String encrypedString = Encrypt.encryptString(iPs);
+		//String eIps = Encrypt.getMD5Endocing(encrypedString);
+		//System.out.println("eips:"+eIps);
+		//Member member = new Member(1, iId, eIps, iEmail);
+		Member member = new Member(1, iId, iPs, iEmail);
 		ch.save(member);
 		// javamail
 		String from = "tlap08609@gmail.com";

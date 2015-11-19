@@ -170,7 +170,7 @@ public class OrderHibernateDAO implements OrderDAO {
 		List<Orders> list = null;
 		try {
 			tx = session.beginTransaction();
-			Query query = session.createQuery("from Order"); // HQL
+			Query query = session.createQuery("from Orders"); // HQL
 			list = (List<Orders>) query.list();
 
 			tx.commit();

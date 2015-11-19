@@ -36,7 +36,7 @@ public class Forgetpassword extends HttpServlet {
 		List<String> bcc = Arrays.asList(new String[] {});
 		String subject = "" + fId + "您好，我們是MS機械錶，此封信有你的密碼，請小心保存";
 		String text = "<h1>謝謝您的來信詢問密碼事宜，</h1>"
-				+ "<h2>您的密碼為："+dd1+"，請將此密碼寫入你的登入訊息，謝謝！</h2>"
+				+ "<h2>您的密碼為："+dd1.get(0)+"，請將此密碼寫入你的登入訊息，謝謝！</h2>"
 				+ "<br><br><font color='blue'> 再次感謝, "
 				+ "</font><br>MS機械錶專賣店敬上";
 		List<String> attachment = Arrays.asList(new String[] {});
