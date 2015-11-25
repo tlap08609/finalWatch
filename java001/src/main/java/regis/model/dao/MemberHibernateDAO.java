@@ -3,13 +3,13 @@ package regis.model.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.FlushMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import regis.model.Member;
-import all.util.Encrypt;
 import all.util.HibernateUtil;
 
 public class MemberHibernateDAO implements MemberDAO {
@@ -75,7 +75,7 @@ public class MemberHibernateDAO implements MemberDAO {
 		try {
 			tx = session.beginTransaction();
 			member = (Member) session.get(Member.class, key);
-			System.out.println("member是  " + member);
+			//System.out.println("member是  " + member);
 			tx.commit();
 		} catch (Exception ex) {
 			if (tx != null)
@@ -166,7 +166,11 @@ public class MemberHibernateDAO implements MemberDAO {
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
+//			session.setFlushMode(FlushMode.AUTO);
 			session.merge(member);
+//			session.flush();
+//			session.refresh(member);
+//			session.clear();
 			tx.commit();
 			count = 1;
 		} catch (Exception ex) {

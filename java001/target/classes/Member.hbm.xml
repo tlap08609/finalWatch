@@ -3,6 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="regis.model.Member" table="java001_member">
+<!--      <cache usage="read-write"/>  -->
         <id name="id" column="id" type="java.lang.Long">
             <generator class="native" />
         </id>

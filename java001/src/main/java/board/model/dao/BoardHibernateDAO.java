@@ -1,101 +1,107 @@
-package product.model.dao;
+package board.model.dao;
 
+import java.sql.Clob;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import product.model.Product;
+import board.model.Board;
 import all.util.HibernateUtil;
 
-public class ProductHibernateDAO implements ProductDAO {
+public class BoardHibernateDAO implements BoardDAO {
 	private int totalPages = -1;
 	// int pageNo = 0;
 	public static int pageNo = 0;
 	public static int recordsPerPage = 6; // 每頁六筆
 
-//	public boolean isDup(String name) {
-//		boolean result = false;
-//		Session session = HibernateUtil.getSessionFactory().openSession();
-//		Transaction tx = null;
-//		try {
-//			tx = session.beginTransaction();
-//			Query query = session.createQuery("from ProductBean where id=?");
-//			query.setString(0, name);
-//			List<Product> list = (List<Product>) query.list();
-//			if (list.isEmpty()) {
-//				result = false;
-//			} else {
-//				result = true;
-//			}
-//			tx.commit();
-//		} catch (Exception ex) {
-//			if (tx != null)
-//				tx.rollback();
-//			System.out.println(ex.getMessage());
-//		} finally {
-//			if (session != null) {
-//				session.close();
-//			}
-//		}
-//		return result;
-//	}
-
-	public int save(Product product) {
+	public void save(Board bb) {
 		SessionFactory factory = HibernateUtil.getSessionFactory();
-		int count = 0;
-		Session session = factory.openSession();
+		Session session = factory.getCurrentSession();
 		Transaction tx = null;
+		String m = bb.getMainText();
+		Clob clob = null;
 		try {
 			tx = session.beginTransaction();
-			session.save(product);
+			clob = Hibernate.getLobCreator(session).createClob(m);
+			bb.setComment(clob);
+			session.save(bb);
 			tx.commit();
-			count = 1;
-		} catch (Exception ex) {
-			if (tx != null)
+		} catch (Exception e) {
+			if (tx != null) {
 				tx.rollback();
-		} finally {
-			if (session != null)
-				session.close();
+			}
 		}
-		// factory.close();
-		// HibernateUtil.shutdown();
-		return count;
+
+	}
+	public List<Board> getAllBoards() {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;
+		List<Board>  list = null;
+		try {
+			tx = session.beginTransaction();
+			String hql = "from Board b order by b.no desc";
+			Query query = session.createQuery(hql);
+			list = query.list();
+			tx.commit();
+		} catch(Exception ex){
+			//ex.printStackTrace();
+			if (ex != null) tx.rollback();
+			System.out.println(ex.getMessage());
+		}
+		return list;
 	}
 
-	public Product findByPrimaryKey(long key) {
+	public Board findByPrimaryKey(int key) {
 		SessionFactory factory = HibernateUtil.getSessionFactory();
-		Product product = null;
+		Board board = null;
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			product = (Product) session.get(Product.class, key);
+			board = (Board) session.get(Board.class, key);
 			tx.commit();
 		} catch (Exception ex) {
 			if (tx != null)
 				tx.rollback();
 			ex.printStackTrace();
-		} finally {
-			if (session != null)
-				session.close();
 		}
+		/*
+		 * finally { if (session != null) session.close(); }
+		 */
 		// factory.close();
-		return product;
+		return board;
 	}
 
-	public List<Product> getAll() {
+	public Board getBoard(int pk) {
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		Board bb = null;
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			bb = (Board) session.get(Board.class, pk);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+		}
+		return bb;
+	}
+
+	public List<Board> getAll() {
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List<Product> list = null;
+		List<Board> list = null;
 		try {
 			tx = session.beginTransaction();
-			Query query = session.createQuery("from Product"); // HQL
-			list = (List<Product>) query.list();
+			Query query = session.createQuery("from Board"); // HQL
+			list = (List<Board>) query.list();
 			tx.commit();
 		} catch (Exception ex) {
 			if (tx != null)
@@ -105,17 +111,16 @@ public class ProductHibernateDAO implements ProductDAO {
 		return list;
 	}
 
-	public int delete(long key) {
+	public int delete(int no) {
 		int count = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
-		Product product = null;
+		Board board = null;
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			product = new Product(key);
-			System.out.println("key=" + key);
-			session.delete(product);
+			board = new Board(no);
+			session.delete(board);
 			tx.commit();
 			count = 1;
 		} catch (Exception ex) {
@@ -131,14 +136,14 @@ public class ProductHibernateDAO implements ProductDAO {
 		return count;
 	}
 
-	public int update(Product product) {
+	public int update(Board board) {
 		int count = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			session.merge(product);
+			session.merge(board);
 			tx.commit();
 			count = 1;
 		} catch (Exception ex) {
@@ -198,15 +203,15 @@ public class ProductHibernateDAO implements ProductDAO {
 		return countsResult;
 	}
 
-	public List<Product> getPageBooks() {
+	public List<Board> getPageBooks() {
 
-		List<Product> list = null;
+		List<Board> list = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			Query query = session.createQuery("from Product");
+			Query query = session.createQuery("from Board");
 			// select rownum from Product where rownum >= ? and rownum <= ?
 			// query.setLong(0, 9);
 			// query.setLong(1, 14);
@@ -233,18 +238,17 @@ public class ProductHibernateDAO implements ProductDAO {
 		return list;
 	}
 
-	
-	public List<Product> queryProduct(String word) {
+	public List<Board> queryProduct(String word) {
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.getCurrentSession();
 		Transaction tx = null;
-		List<Product> list = null;
+		List<Board> list = null;
 		try {
 			tx = session.beginTransaction();
-			String hql = "FROM Product b WHERE b.productContent like :word";
+			String hql = "FROM Board b WHERE b.comment like :word";
 			Query query = session.createQuery(hql);
-			query.setParameter("word", "%"+word+"%");
-			 list = query.list();
+			query.setParameter("word", "%" + word + "%");
+			list = query.list();
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -254,7 +258,5 @@ public class ProductHibernateDAO implements ProductDAO {
 		}
 		return list;
 	}
-
-
 
 }

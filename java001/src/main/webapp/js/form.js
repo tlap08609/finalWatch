@@ -155,6 +155,8 @@ $(function() {
 						case "memberUpdateSelfMemberForm":
 							
 							return true;
+						case "board":
+							return true;
 							
 							
 							

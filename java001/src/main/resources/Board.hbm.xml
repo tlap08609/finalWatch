@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="board.model.Board" table="java001_board">
+		<id name="no" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="name" column='MEM_NAME' />
+		<property name="mail" column='MEM_EMAIL'/>
+		<property name="time" column='MESSAGE_TIME' />
+		<property name="comment" column="BOARD_MESSAGE" />
+
+
+
+
+
+	</class>
+</hibernate-mapping>

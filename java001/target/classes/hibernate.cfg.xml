@@ -23,7 +23,9 @@
 
 		<!-- 以下新add <property name="hibernate.current_session_context_class">thread</property> -->
 		<property name="hibernate.current_session_context_class">thread</property>
-
+		<!-- provider -->
+		<!-- <property name="hibernate.cache.provider_class"> org.hibernate.cache.EhCacheProvider 
+			</property> -->
 
 		<!-- 到這 -->
 
@@ -31,6 +33,6 @@
 		<mapping resource="Product.hbm.xml" />
 		<mapping resource="OrderItem.hbm.xml" />
 		<mapping resource="Orders.hbm.xml" />
-
+		<mapping resource="Board.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
