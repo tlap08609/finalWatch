@@ -68,11 +68,8 @@
 				<li><a href="admin_manageSlider.jsp">廣告管理</a></li>
 				<li><a href="ShowProductAdmin">商城管理</a></li>
 				<li><a href="adminQueryOrder">訂單管理</a></li>
-				<li><a href="#">首頁消息管理A</a></li>
-				<li><a href="#">首頁消息管理B</a></li>
-				<li><a href="#">首頁消息管理C</a></li>
 				<li><a href="#">會員留言管理</a></li>
-				<li><a href="#">Contact</a></li>
+
 			</ul>
 		</div>
 		<!-- /#sidebar-wrapper -->
