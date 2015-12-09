@@ -42,8 +42,10 @@ header {
 .logotext {
     font-size: 14px;
     position: absolute;
-    left: 149px;
-    top: 28px;
+/*     left: 149px;
+    top: 28px; */
+    left:49%;
+    top:27%;
 }
 
 .glyphicons .glyphicons-user {

@@ -78,8 +78,8 @@
 						</a></li>
 						<li class="col-md-2 aboutus"><a href="aboutUs.jsp">關於我們</a></li>
 						<li class="col-md-2"><a href="ShowProductIndex">購物商城</a></li>
-						<li class="col-md-2"><a href="MessangeBoard.jsp">討論區</a></li>
-						<li class="col-md-2"><a href="service.jsp">維修服務</a></li>
+						<li class="col-md-2"><a href="MessangeBoard.jsp">留言板</a></li>
+						<li class="col-md-2"><a href="address.jsp">會員服務</a></li>
 					</ul>
 				</div>
 			</div>

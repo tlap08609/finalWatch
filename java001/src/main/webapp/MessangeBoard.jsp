@@ -11,30 +11,25 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<h3>
-						<span class="label label-default">討論區</span>
+						<span class="label label-default">留言板</span>
 					</h3>
 					<hr>
 					<c:choose>
 						<c:when test="${not empty board}">
 
 							<c:forEach var="aBean" items="${board.allBoards}">
-								<table class="table table-bordered" style="color: black" tex>
+								<table class="table table-bordered messageTr" style="color: black">
 									<tr>
 										<td class="info" align="left">編號：${aBean.no}</td>
 										<td class="info" align="left">會員名稱：${aBean.name}</td>
 										<td class="info" align="left">發文時間：${aBean.time}</td>
 									</tr>
 									<tr>
-
 										<td colspan="3" align="left">發言內容：${aBean.stringComment}</td>
+									</tr>
 
-									</tr>
-									<tr>
-										<td colspan="3">Email：${aBean.mail}</td>
-									</tr>
 								</table>
-								<BR>
-								<BR>
+
 							</c:forEach>
 
 

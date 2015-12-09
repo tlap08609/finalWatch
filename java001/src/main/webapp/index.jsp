@@ -67,35 +67,33 @@
 
 <div class="container tt">
 	<div class="row">
-		<div class="col-md-4 portfolio-item">
-			<a href="#"> <img class="img-responsive"
-				src="http://placehold.it/700x400" alt="">
+		<div class="col-md-4 portfolio-item com-box1">
+			<a href="scroll.html" target="_blank"> <img
+				class="img-responsive" src="images/main/conboximg1.png" alt="">
+				<div class="text">
+					<h5 class="text-center">見證精準的時刻</h5>
+					<h5 class="text-center">Le Locle Automatic Chronometer</h5>
+				</div>
 			</a>
-			<h3>
-				<a href="#">品牌Highlight e.g.男錶近期優惠</a>
-			</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-				viverra euismod odio, gravida pellentesque urna varius vitae.</p>
 		</div>
-		<div class="col-md-4 portfolio-item">
-			<a href="#"> <img class="img-responsive"
-				src="http://placehold.it/700x400" alt="">
+		<div class="col-md-4 portfolio-item com-box2">
+			<a href="choose.jsp"> <img class="img-responsive"
+				src="images/main/conboximg2.png" alt="">
+				<div class="text">
+					<h5 class="text-center">試戴您的情人節腕錶</h5>
+					<h5 class="text-center">LONGINES系列</h5>
+				</div>
 			</a>
-			<h3>
-				<a href="#">討論區2016即將上線！</a>
-			</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-				viverra euismod odio, gravida pellentesque urna varius vitae.</p>
 		</div>
-		<div class="col-md-4 portfolio-item">
-			<a href="#"> <img class="img-responsive"
-				src="http://placehold.it/700x400" alt="">
+		<div class="col-md-4 portfolio-item com-box3">
+			<a href="service.jsp"> <img class="img-responsive"
+				src="images/main/conboximg3.png" alt="">
+			
+			<div class="text">
+				<h5>新增會員服務</h5>
+				<h5>維修服務說明（需要先登入會員）</h5>
+			</div>
 			</a>
-			<h3>
-				<a href="#">請將建議留言給我們！（或是聊天室系統）</a>
-			</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-				viverra euismod odio, gravida pellentesque urna varius vitae.</p>
 		</div>
 	</div>
 </div>
